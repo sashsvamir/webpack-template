@@ -1,3 +1,8 @@
+const styles = require('./styles.sass')
 
+const app = document.querySelector('#app')
 
-alert('hello world')
+const regards = document.createElement('div')
+regards.classList.add('regards')
+regards.innerHTML = "<h1>Hello world!</h1>"
+app.appendChild(regards)

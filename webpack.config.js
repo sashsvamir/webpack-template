@@ -1,30 +1,35 @@
 const path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: './src/index.js',
 
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
 
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: devMode ? 'production' : 'development',
 
   module: {
     rules: [{
-      test: /\.sass$/,
+      test: /\.(sa|sc|c)ss$/,
       use: [
-        'style-loader',
+        devMode ? MiniCssExtractPlugin.loader : 'style-loader',
         'css-loader',
-        'sass-loader'
+        'sass-loader',
       ]
     }]
   },
 
   plugins: [
-    new HtmlWebpackPlugin(),
+    new CleanWebpackPlugin('dist/*.*'),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new MiniCssExtractPlugin(),
   ],
 
 }
