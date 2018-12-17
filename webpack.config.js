@@ -15,6 +15,8 @@ module.exports = {
 
   mode: devMode ? 'production' : 'development',
 
+  devtool: devMode ? 'source-map' : false,
+
   module: {
     rules: [{
       test: /\.(sa|sc|c)ss$/,
@@ -23,11 +25,22 @@ module.exports = {
         'css-loader',
         'sass-loader',
       ]
-    }]
+    }, {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+            }
+          }
+        ]
+      }]
   },
 
   plugins: [
-    new CleanWebpackPlugin('dist/*.*'),
+    new CleanWebpackPlugin('dist/*'),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new MiniCssExtractPlugin(),
   ],
