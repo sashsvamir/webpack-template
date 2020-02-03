@@ -10,6 +10,10 @@ Clone the repo:
 ```sh
 git clone https://github.com/sashsvamir/webpack-template
 ```
+Install dependencies:
+```sh
+npm ci
+```
 
 ## Development
 
