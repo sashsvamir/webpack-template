@@ -34,7 +34,7 @@ const htmlWebpackPlugins = files.map(file => {
 
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/app.js',
 
   output: {
     path: path.resolve(__dirname, './dist'),
