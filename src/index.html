@@ -3,14 +3,16 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>
-    <%= htmlWebpackPlugin.options.title %>
-  </title>
+  <title>Title</title>
 </head>
 
 <body>
 
-  <div id="app"></div>
+  <include custom-src="layout/header.html" src="layout/header.html"></include>
+
+  <include custom-src="main.html" src="main.html"></include>
+
+  <include custom-src="layout/footer.html" src="layout/footer.html"></include>
 
 </body>
 
