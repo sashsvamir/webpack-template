@@ -22,8 +22,8 @@ const htmlWebpackPlugins = files.map(file => {
   const hwpConfig = {
     filename: path.relative(htmlRootDir, file),
     template: file,
-    inject: true,
-    minify: false,
+    // inject: true,
+    // minify: false,
     hash: true,
   }
   return new HtmlWebpackPlugin(hwpConfig)
@@ -88,10 +88,10 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.js?$/,
-      //   loader: 'babel-loader',
-      // },
+      {
+        test: /\.js?$/,
+        loader: 'babel-loader',
+      },
     ],
   },
 
